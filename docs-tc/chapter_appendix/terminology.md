@@ -34,7 +34,7 @@
 | linked list node, list node    | 鏈結串列節點       | 鏈結串列節點   |
 | head node                      | 頭節點         | 頭節點         |
 | tail node                      | 尾節點         | 尾節點         |
-| list                           | 列表           | 列表           |
+| list                           | 串列           | 串列           |
 | dynamic array                  | 動態陣列       | 動態陣列       |
 | hard disk                      | 硬碟           | 硬碟           |
 | random-access memory (RAM)     | 記憶體           | 記憶體           |

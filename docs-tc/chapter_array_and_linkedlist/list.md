@@ -1,26 +1,26 @@
-# 列表
+# 串列
 
-「列表 list」是一個抽象的資料結構概念，它表示元素的有序集合，支援元素訪問、修改、新增、刪除和走訪等操作，無須使用者考慮容量限制的問題。列表可以基於鏈結串列或陣列實現。
+「串列 list」是一個抽象的資料結構概念，它表示元素的有序集合，支援元素訪問、修改、新增、刪除和走訪等操作，無須使用者考慮容量限制的問題。串列可以基於鏈結串列或陣列實現。
 
-- 鏈結串列天然可以看作一個列表，其支援元素增刪查改操作，並且可以靈活動態擴容。
-- 陣列也支援元素增刪查改，但由於其長度不可變，因此只能看作一個具有長度限制的列表。
+- 鏈結串列天然可以看作一個串列，其支援元素增刪查改操作，並且可以靈活動態擴容。
+- 陣列也支援元素增刪查改，但由於其長度不可變，因此只能看作一個具有長度限制的串列。
 
-當使用陣列實現列表時，**長度不可變的性質會導致列表的實用性降低**。這是因為我們通常無法事先確定需要儲存多少資料，從而難以選擇合適的列表長度。若長度過小，則很可能無法滿足使用需求；若長度過大，則會造成記憶體空間浪費。
+當使用陣列實現串列時，**長度不可變的性質會導致串列的實用性降低**。這是因為我們通常無法事先確定需要儲存多少資料，從而難以選擇合適的串列長度。若長度過小，則很可能無法滿足使用需求；若長度過大，則會造成記憶體空間浪費。
 
-為解決此問題，我們可以使用「動態陣列 dynamic array」來實現列表。它繼承了陣列的各項優點，並且可以在程式執行過程中進行動態擴容。
+為解決此問題，我們可以使用「動態陣列 dynamic array」來實現串列。它繼承了陣列的各項優點，並且可以在程式執行過程中進行動態擴容。
 
-實際上，**許多程式語言中的標準庫提供的列表是基於動態陣列實現的**，例如 Python 中的 `list` 、Java 中的 `ArrayList` 、C++ 中的 `vector` 和 C# 中的 `List` 等。在接下來的討論中，我們將把“列表”和“動態陣列”視為等同的概念。
+實際上，**許多程式語言中的標準庫提供的串列是基於動態陣列實現的**，例如 Python 中的 `list` 、Java 中的 `ArrayList` 、C++ 中的 `vector` 和 C# 中的 `List` 等。在接下來的討論中，我們將把“串列”和“動態陣列”視為等同的概念。
 
-## 列表常用操作
+## 串列常用操作
 
-### 初始化列表
+### 初始化串列
 
 我們通常使用“無初始值”和“有初始值”這兩種初始化方法：
 
 === "Python"
 
     ```python title="list.py"
-    # 初始化列表
+    # 初始化串列
     # 無初始值
     nums1: list[int] = []
     # 有初始值
@@ -30,7 +30,7 @@
 === "C++"
 
     ```cpp title="list.cpp"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 需注意，C++ 中 vector 即是本文描述的 nums
     // 無初始值
     vector<int> nums1;
@@ -41,7 +41,7 @@
 === "Java"
 
     ```java title="list.java"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     List<Integer> nums1 = new ArrayList<>();
     // 有初始值（注意陣列的元素型別需為 int[] 的包裝類 Integer[]）
@@ -52,7 +52,7 @@
 === "C#"
 
     ```csharp title="list.cs"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     List<int> nums1 = [];
     // 有初始值
@@ -63,7 +63,7 @@
 === "Go"
 
     ```go title="list_test.go"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     nums1 := []int{}
     // 有初始值
@@ -73,7 +73,7 @@
 === "Swift"
 
     ```swift title="list.swift"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     let nums1: [Int] = []
     // 有初始值
@@ -83,7 +83,7 @@
 === "JS"
 
     ```javascript title="list.js"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     const nums1 = [];
     // 有初始值
@@ -93,7 +93,7 @@
 === "TS"
 
     ```typescript title="list.ts"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     const nums1: number[] = [];
     // 有初始值
@@ -103,7 +103,7 @@
 === "Dart"
 
     ```dart title="list.dart"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     List<int> nums1 = [];
     // 有初始值
@@ -113,7 +113,7 @@
 === "Rust"
 
     ```rust title="list.rs"
-    /* 初始化列表 */
+    /* 初始化串列 */
     // 無初始值
     let nums1: Vec<i32> = Vec::new();
     // 有初始值
@@ -129,7 +129,7 @@
 === "Zig"
 
     ```zig title="list.zig"
-    // 初始化列表
+    // 初始化串列
     var nums = std.ArrayList(i32).init(std.heap.page_allocator);
     defer nums.deinit();
     try nums.appendSlice(&[_]i32{ 1, 3, 2, 5, 4 });
@@ -141,7 +141,7 @@
 
 ### 訪問元素
 
-列表本質上是陣列，因此可以在 $O(1)$ 時間內訪問和更新元素，效率很高。
+串列本質上是陣列，因此可以在 $O(1)$ 時間內訪問和更新元素，效率很高。
 
 === "Python"
 
@@ -264,12 +264,12 @@
 
 ### 插入與刪除元素
 
-相較於陣列，列表可以自由地新增與刪除元素。在列表尾部新增元素的時間複雜度為 $O(1)$ ，但插入和刪除元素的效率仍與陣列相同，時間複雜度為 $O(n)$ 。
+相較於陣列，串列可以自由地新增與刪除元素。在串列尾部新增元素的時間複雜度為 $O(1)$ ，但插入和刪除元素的效率仍與陣列相同，時間複雜度為 $O(n)$ 。
 
 === "Python"
 
     ```python title="list.py"
-    # 清空列表
+    # 清空串列
     nums.clear()
 
     # 在尾部新增元素
@@ -289,7 +289,7 @@
 === "C++"
 
     ```cpp title="list.cpp"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.clear();
 
     /* 在尾部新增元素 */
@@ -309,7 +309,7 @@
 === "Java"
 
     ```java title="list.java"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.clear();
 
     /* 在尾部新增元素 */
@@ -329,7 +329,7 @@
 === "C#"
 
     ```csharp title="list.cs"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.Clear();
 
     /* 在尾部新增元素 */
@@ -349,7 +349,7 @@
 === "Go"
 
     ```go title="list_test.go"
-    /* 清空列表 */
+    /* 清空串列 */
     nums = nil
 
     /* 在尾部新增元素 */
@@ -369,7 +369,7 @@
 === "Swift"
 
     ```swift title="list.swift"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.removeAll()
 
     /* 在尾部新增元素 */
@@ -389,7 +389,7 @@
 === "JS"
 
     ```javascript title="list.js"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.length = 0;
 
     /* 在尾部新增元素 */
@@ -409,7 +409,7 @@
 === "TS"
 
     ```typescript title="list.ts"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.length = 0;
 
     /* 在尾部新增元素 */
@@ -429,7 +429,7 @@
 === "Dart"
 
     ```dart title="list.dart"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.clear();
 
     /* 在尾部新增元素 */
@@ -449,7 +449,7 @@
 === "Rust"
 
     ```rust title="list.rs"
-    /* 清空列表 */
+    /* 清空串列 */
     nums.clear();
 
     /* 在尾部新增元素 */
@@ -475,7 +475,7 @@
 === "Zig"
 
     ```zig title="list.zig"
-    // 清空列表
+    // 清空串列
     nums.clearRetainingCapacity();
 
     // 在尾部新增元素
@@ -496,19 +496,19 @@
 
     https://pythontutor.com/render.html#code=%22%22%22Driver%20Code%22%22%22%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20%23%20%E6%9C%89%E5%88%9D%E5%A7%8B%E5%80%BC%0A%20%20%20%20nums%20%3D%20%5B1,%203,%202,%205,%204%5D%0A%20%20%20%20%0A%20%20%20%20%23%20%E6%B8%85%E7%A9%BA%E5%88%97%E8%A1%A8%0A%20%20%20%20nums.clear%28%29%0A%20%20%20%20%0A%20%20%20%20%23%20%E5%9C%A8%E5%B0%BE%E9%83%A8%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%0A%20%20%20%20nums.append%281%29%0A%20%20%20%20nums.append%283%29%0A%20%20%20%20nums.append%282%29%0A%20%20%20%20nums.append%285%29%0A%20%20%20%20nums.append%284%29%0A%20%20%20%20%0A%20%20%20%20%23%20%E5%9C%A8%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%0A%20%20%20%20nums.insert%283,%206%29%20%20%23%20%E5%9C%A8%E7%B4%A2%E5%BC%95%203%20%E5%A4%84%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%97%206%0A%20%20%20%20%0A%20%20%20%20%23%20%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0%0A%20%20%20%20nums.pop%283%29%20%20%20%20%20%20%20%20%23%20%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95%203%20%E5%A4%84%E7%9A%84%E5%85%83%E7%B4%A0&cumulative=false&curInstr=3&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false
 
-### 走訪列表
+### 走訪串列
 
-與陣列一樣，列表可以根據索引走訪，也可以直接走訪各元素。
+與陣列一樣，串列可以根據索引走訪，也可以直接走訪各元素。
 
 === "Python"
 
     ```python title="list.py"
-    # 透過索引走訪列表
+    # 透過索引走訪串列
     count = 0
     for i in range(len(nums)):
         count += nums[i]
 
-    # 直接走訪列表元素
+    # 直接走訪串列元素
     for num in nums:
         count += num
     ```
@@ -516,13 +516,13 @@
 === "C++"
 
     ```cpp title="list.cpp"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     int count = 0;
     for (int i = 0; i < nums.size(); i++) {
         count += nums[i];
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0;
     for (int num : nums) {
         count += num;
@@ -532,13 +532,13 @@
 === "Java"
 
     ```java title="list.java"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     int count = 0;
     for (int i = 0; i < nums.size(); i++) {
         count += nums.get(i);
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     for (int num : nums) {
         count += num;
     }
@@ -547,13 +547,13 @@
 === "C#"
 
     ```csharp title="list.cs"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     int count = 0;
     for (int i = 0; i < nums.Count; i++) {
         count += nums[i];
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0;
     foreach (int num in nums) {
         count += num;
@@ -563,13 +563,13 @@
 === "Go"
 
     ```go title="list_test.go"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     count := 0
     for i := 0; i < len(nums); i++ {
         count += nums[i]
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0
     for _, num := range nums {
         count += num
@@ -579,13 +579,13 @@
 === "Swift"
 
     ```swift title="list.swift"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     var count = 0
     for i in nums.indices {
         count += nums[i]
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0
     for num in nums {
         count += num
@@ -595,13 +595,13 @@
 === "JS"
 
     ```javascript title="list.js"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     let count = 0;
     for (let i = 0; i < nums.length; i++) {
         count += nums[i];
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0;
     for (const num of nums) {
         count += num;
@@ -611,13 +611,13 @@
 === "TS"
 
     ```typescript title="list.ts"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     let count = 0;
     for (let i = 0; i < nums.length; i++) {
         count += nums[i];
     }
 
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0;
     for (const num of nums) {
         count += num;
@@ -627,13 +627,13 @@
 === "Dart"
 
     ```dart title="list.dart"
-    /* 透過索引走訪列表 */
+    /* 透過索引走訪串列 */
     int count = 0;
     for (var i = 0; i < nums.length; i++) {
         count += nums[i];
     }
     
-    /* 直接走訪列表元素 */
+    /* 直接走訪串列元素 */
     count = 0;
     for (var num in nums) {
         count += num;
@@ -643,13 +643,13 @@
 === "Rust"
 
     ```rust title="list.rs"
-    // 透過索引走訪列表
+    // 透過索引走訪串列
     let mut _count = 0;
     for i in 0..nums.len() {
         _count += nums[i];
     }
 
-    // 直接走訪列表元素
+    // 直接走訪串列元素
     _count = 0;
     for num in &nums {
         _count += num;
@@ -665,14 +665,14 @@
 === "Zig"
 
     ```zig title="list.zig"
-    // 透過索引走訪列表
+    // 透過索引走訪串列
     var count: i32 = 0;
     var i: i32 = 0;
     while (i < nums.items.len) : (i += 1) {
         count += nums[i];
     }
 
-    // 直接走訪列表元素
+    // 直接走訪串列元素
     count = 0;
     for (nums.items) |num| {
         count += num;
@@ -683,87 +683,87 @@
 
     https://pythontutor.com/render.html#code=%22%22%22Driver%20Code%22%22%22%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20%23%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8%0A%20%20%20%20nums%20%3D%20%5B1,%203,%202,%205,%204%5D%0A%20%20%20%20%0A%20%20%20%20%23%20%E9%80%9A%E8%BF%87%E7%B4%A2%E5%BC%95%E9%81%8D%E5%8E%86%E5%88%97%E8%A1%A8%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20for%20i%20in%20range%28len%28nums%29%29%3A%0A%20%20%20%20%20%20%20%20count%20%2B%3D%20nums%5Bi%5D%0A%0A%20%20%20%20%23%20%E7%9B%B4%E6%8E%A5%E9%81%8D%E5%8E%86%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%0A%20%20%20%20for%20num%20in%20nums%3A%0A%20%20%20%20%20%20%20%20count%20%2B%3D%20num&cumulative=false&curInstr=3&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false
 
-### 拼接列表
+### 拼接串列
 
-給定一個新列表 `nums1` ，我們可以將其拼接到原列表的尾部。
+給定一個新串列 `nums1` ，我們可以將其拼接到原串列的尾部。
 
 === "Python"
 
     ```python title="list.py"
-    # 拼接兩個列表
+    # 拼接兩個串列
     nums1: list[int] = [6, 8, 7, 10, 9]
-    nums += nums1  # 將列表 nums1 拼接到 nums 之後
+    nums += nums1  # 將串列 nums1 拼接到 nums 之後
     ```
 
 === "C++"
 
     ```cpp title="list.cpp"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     vector<int> nums1 = { 6, 8, 7, 10, 9 };
-    // 將列表 nums1 拼接到 nums 之後
+    // 將串列 nums1 拼接到 nums 之後
     nums.insert(nums.end(), nums1.begin(), nums1.end());
     ```
 
 === "Java"
 
     ```java title="list.java"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     List<Integer> nums1 = new ArrayList<>(Arrays.asList(new Integer[] { 6, 8, 7, 10, 9 }));
-    nums.addAll(nums1);  // 將列表 nums1 拼接到 nums 之後
+    nums.addAll(nums1);  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "C#"
 
     ```csharp title="list.cs"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     List<int> nums1 = [6, 8, 7, 10, 9];
-    nums.AddRange(nums1);  // 將列表 nums1 拼接到 nums 之後
+    nums.AddRange(nums1);  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "Go"
 
     ```go title="list_test.go"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     nums1 := []int{6, 8, 7, 10, 9}
-    nums = append(nums, nums1...)  // 將列表 nums1 拼接到 nums 之後
+    nums = append(nums, nums1...)  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "Swift"
 
     ```swift title="list.swift"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     let nums1 = [6, 8, 7, 10, 9]
-    nums.append(contentsOf: nums1) // 將列表 nums1 拼接到 nums 之後
+    nums.append(contentsOf: nums1) // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "JS"
 
     ```javascript title="list.js"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     const nums1 = [6, 8, 7, 10, 9];
-    nums.push(...nums1);  // 將列表 nums1 拼接到 nums 之後
+    nums.push(...nums1);  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "TS"
 
     ```typescript title="list.ts"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     const nums1: number[] = [6, 8, 7, 10, 9];
-    nums.push(...nums1);  // 將列表 nums1 拼接到 nums 之後
+    nums.push(...nums1);  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "Dart"
 
     ```dart title="list.dart"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     List<int> nums1 = [6, 8, 7, 10, 9];
-    nums.addAll(nums1);  // 將列表 nums1 拼接到 nums 之後
+    nums.addAll(nums1);  // 將串列 nums1 拼接到 nums 之後
     ```
 
 === "Rust"
 
     ```rust title="list.rs"
-    /* 拼接兩個列表 */
+    /* 拼接兩個串列 */
     let nums1: Vec<i32> = vec![6, 8, 7, 10, 9];
     nums.extend(nums1);
     ```
@@ -777,89 +777,89 @@
 === "Zig"
 
     ```zig title="list.zig"
-    // 拼接兩個列表
+    // 拼接兩個串列
     var nums1 = std.ArrayList(i32).init(std.heap.page_allocator);
     defer nums1.deinit();
     try nums1.appendSlice(&[_]i32{ 6, 8, 7, 10, 9 });
-    try nums.insertSlice(nums.items.len, nums1.items); // 將列表 nums1 拼接到 nums 之後
+    try nums.insertSlice(nums.items.len, nums1.items); // 將串列 nums1 拼接到 nums 之後
     ```
 
 ??? pythontutor "視覺化執行"
 
     https://pythontutor.com/render.html#code=%22%22%22Driver%20Code%22%22%22%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20%23%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8%0A%20%20%20%20nums%20%3D%20%5B1,%203,%202,%205,%204%5D%0A%20%20%20%20%0A%20%20%20%20%23%20%E6%8B%BC%E6%8E%A5%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%0A%20%20%20%20nums1%20%3D%20%5B6,%208,%207,%2010,%209%5D%0A%20%20%20%20nums%20%2B%3D%20nums1%20%20%23%20%E5%B0%86%E5%88%97%E8%A1%A8%20nums1%20%E6%8B%BC%E6%8E%A5%E5%88%B0%20nums%20%E4%B9%8B%E5%90%8E&cumulative=false&curInstr=3&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false
 
-### 排序列表
+### 排序串列
 
-完成列表排序後，我們便可以使用在陣列類演算法題中經常考查的“二分搜尋”和“雙指標”演算法。
+完成串列排序後，我們便可以使用在陣列類演算法題中經常考查的“二分搜尋”和“雙指標”演算法。
 
 === "Python"
 
     ```python title="list.py"
-    # 排序列表
-    nums.sort()  # 排序後，列表元素從小到大排列
+    # 排序串列
+    nums.sort()  # 排序後，串列元素從小到大排列
     ```
 
 === "C++"
 
     ```cpp title="list.cpp"
-    /* 排序列表 */
-    sort(nums.begin(), nums.end());  // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    sort(nums.begin(), nums.end());  // 排序後，串列元素從小到大排列
     ```
 
 === "Java"
 
     ```java title="list.java"
-    /* 排序列表 */
-    Collections.sort(nums);  // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    Collections.sort(nums);  // 排序後，串列元素從小到大排列
     ```
 
 === "C#"
 
     ```csharp title="list.cs"
-    /* 排序列表 */
-    nums.Sort(); // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    nums.Sort(); // 排序後，串列元素從小到大排列
     ```
 
 === "Go"
 
     ```go title="list_test.go"
-    /* 排序列表 */
-    sort.Ints(nums)  // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    sort.Ints(nums)  // 排序後，串列元素從小到大排列
     ```
 
 === "Swift"
 
     ```swift title="list.swift"
-    /* 排序列表 */
-    nums.sort() // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    nums.sort() // 排序後，串列元素從小到大排列
     ```
 
 === "JS"
 
     ```javascript title="list.js"
-    /* 排序列表 */  
-    nums.sort((a, b) => a - b);  // 排序後，列表元素從小到大排列
+    /* 排序串列 */  
+    nums.sort((a, b) => a - b);  // 排序後，串列元素從小到大排列
     ```
 
 === "TS"
 
     ```typescript title="list.ts"
-    /* 排序列表 */
-    nums.sort((a, b) => a - b);  // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    nums.sort((a, b) => a - b);  // 排序後，串列元素從小到大排列
     ```
 
 === "Dart"
 
     ```dart title="list.dart"
-    /* 排序列表 */
-    nums.sort(); // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    nums.sort(); // 排序後，串列元素從小到大排列
     ```
 
 === "Rust"
 
     ```rust title="list.rs"
-    /* 排序列表 */
-    nums.sort(); // 排序後，列表元素從小到大排列
+    /* 排序串列 */
+    nums.sort(); // 排序後，串列元素從小到大排列
     ```
 
 === "C"
@@ -871,7 +871,7 @@
 === "Zig"
 
     ```zig title="list.zig"
-    // 排序列表
+    // 排序串列
     std.sort.sort(i32, nums.items, {}, comptime std.sort.asc(i32));
     ```
 
@@ -879,15 +879,15 @@
 
     https://pythontutor.com/render.html#code=%22%22%22Driver%20Code%22%22%22%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20%23%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8%0A%20%20%20%20nums%20%3D%20%5B1,%203,%202,%205,%204%5D%0A%20%20%20%20%0A%20%20%20%20%23%20%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8%0A%20%20%20%20nums.sort%28%29%20%20%23%20%E6%8E%92%E5%BA%8F%E5%90%8E%EF%BC%8C%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E4%BB%8E%E5%B0%8F%E5%88%B0%E5%A4%A7%E6%8E%92%E5%88%97&cumulative=false&curInstr=3&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false
 
-## 列表實現
+## 串列實現
 
-許多程式語言內建了列表，例如 Java、C++、Python 等。它們的實現比較複雜，各個引數的設定也非常考究，例如初始容量、擴容倍數等。感興趣的讀者可以查閱原始碼進行學習。
+許多程式語言內建了串列，例如 Java、C++、Python 等。它們的實現比較複雜，各個引數的設定也非常考究，例如初始容量、擴容倍數等。感興趣的讀者可以查閱原始碼進行學習。
 
-為了加深對列表工作原理的理解，我們嘗試實現一個簡易版列表，包括以下三個重點設計。
+為了加深對串列工作原理的理解，我們嘗試實現一個簡易版串列，包括以下三個重點設計。
 
 - **初始容量**：選取一個合理的陣列初始容量。在本示例中，我們選擇 10 作為初始容量。
-- **數量記錄**：宣告一個變數 `size` ，用於記錄列表當前元素數量，並隨著元素插入和刪除實時更新。根據此變數，我們可以定位列表尾部，以及判斷是否需要擴容。
-- **擴容機制**：若插入元素時列表容量已滿，則需要進行擴容。先根據擴容倍數建立一個更大的陣列，再將當前陣列的所有元素依次移動至新陣列。在本示例中，我們規定每次將陣列擴容至之前的 2 倍。
+- **數量記錄**：宣告一個變數 `size` ，用於記錄串列當前元素數量，並隨著元素插入和刪除實時更新。根據此變數，我們可以定位串列尾部，以及判斷是否需要擴容。
+- **擴容機制**：若插入元素時串列容量已滿，則需要進行擴容。先根據擴容倍數建立一個更大的陣列，再將當前陣列的所有元素依次移動至新陣列。在本示例中，我們規定每次將陣列擴容至之前的 2 倍。
 
 ```src
 [file]{my_list}-[class]{my_list}-[func]{}

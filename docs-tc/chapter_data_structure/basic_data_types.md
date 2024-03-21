@@ -53,7 +53,7 @@
     # Python 的字元實際上是長度為 1 的字串
     characters: list[str] = ['0'] * 5
     bools: list[bool] = [False] * 5
-    # Python 的列表可以自由儲存各種基本資料型別和物件引用
+    # Python 的串列可以自由儲存各種基本資料型別和物件引用
     data = [0, 0.0, 'a', False, ListNode(0)]
     ```
 

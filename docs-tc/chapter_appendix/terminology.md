@@ -53,7 +53,7 @@
 | hash function                  | 雜湊函式       | 雜湊函式       |
 | hash collision                 | 雜湊衝突       | 雜湊衝突       |
 | load factor                    | 負載因子       | 負載因子       |
-| separate chaining              | 鏈式地址       | 鏈結位址       |
+| separate chaining              | 鏈式位址       | 鏈結位址       |
 | open addressing                | 開放定址       | 開放定址       |
 | linear probing                 | 線性探查       | 線性探查       |
 | lazy deletion                  | 懶刪除         | 懶刪除         |
